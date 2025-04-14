@@ -28,3 +28,13 @@ javac --module-path $PATH_TO_FX --add-modules javafx.controls,javafx.fxml,javafx
 after '--add-modules' we put in list form the modules I need for the file to compile and run.
 Then file name.java at the end. 
 
+For example:
+if my code has:
+
+import javafx.scene.control.Button;
+import javafx.fxml.FXMLLoader;
+
+The command would be:
+
+javac --module-path /Users/josephgarni/Downloads/javafx-sdk-24/lib --add-modules javafx.controls, javafx.fxml MyFile.java
+
