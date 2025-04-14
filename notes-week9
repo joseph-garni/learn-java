@@ -1,0 +1,30 @@
+Notes for Week 9 - COMP16412
+
+Building Graphical User Interfaces with Java: 
+Introduction to JavaFX
+
+lambda expressions 
+
+- most user interface elements are called controls in Java
+- applications are interactive
+
+JavaFX model
+-stage is container of applications
+
+For compiling JavaFX in my application or file, all I need do run in terminal is:
+javac --module-path $PATH_TO_FX --add-modules javafx.controls YourFile.java
+
+For running application/file:
+java --module-path $PATH_TO_FX --add-modules javafx.controls YourFile
+
+where $PATH_TO_FX is just  /Users/josephgarni/Downloads/javafx-sdk-24/lib
+(for me).
+
+Additional step (modules):
+If I need to use modules from the JavaFX package, then I would do as follows:
+
+javac --module-path $PATH_TO_FX --add-modules javafx.controls,javafx.fxml,javafx.media YourFile.java
+
+after '--add-modules' we put in list form the modules I need for the file to compile and run.
+Then file name.java at the end. 
+
