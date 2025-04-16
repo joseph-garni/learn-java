@@ -45,5 +45,77 @@ Elements are nested in hierarchical fashion:
 - Use parent-child notation for referring to containers-contents
 
 
+Chapters to cover in the book:
+Chapter 10
+section 13.4
+section 13.6
 
+Chapter 10 Notes:
+
+JavaFX program is referred to as a application.
+
+JavaFX class will have to extend the Application class (what we are importing)
+
+Top level window in application is called stage 
+-> if you run the program in full-screen mode the screen then becomes the stage
+
+-> some applications can be made to run in the browser -> which makes the browser the stage
+
+the graphic itself is called the scene (scene graphic)
+
+items that make up the scene are called nodes (compontents that allow interaction with the user - i.e buttons, text fields, labels, check boxes -> nodes are commonly called collectively as controls)
+
+modes can also be containers
+
+containers hold other nodes (each container holds nodes in a particular way i.e stacked ontop of each other, horizontally, in a grid)
+
+containers can contain other containers, so we develop a hierarchy (in our scene)
+
+we normally place a top level node in our scene -> called the root node
+
+parent and children are naming convention for containing and contained nodes. 
+
+i.e parent = containing node, child = nodes inside containing node
+
+root note is VBox -> container arranges child nodes vertically
+black border
+VBox has 3 children -> TextField, Label, HBox (HBox is similar to VBox, just arranges its child nodes horizontally) 
+HBox has 3 child notes -> Buttons
+
+When a JavaFX application begins, there are three methods that are called in order:
+
+void init()
+abstract void start(Stage stage)
+void stop()
+
+init is where you would place any routines that need to be carried out before application starts
+stop method is where we place any code we want to be executed after application finishes
+we will be going into these methods in this chapter
+
+what is very important to us is start method
+it is abstract method therefore has to be coded
+it is in this method where the code for our application is place
+you can of course break this up by adding helper methods
+but it is with this method that the application itself begins
+
+how do we launch a JavaFX application?
+
+If we wanted a program called LaunchApplication to run an application called MyApp, we would do this:
+
+import javafx.application.Application;
+class LaunchApplication{
+    public static void main(String[], args)
+    {
+        Application.launch(MyApp.class, args);
+    }
+}
+
+the general form is:
+
+public static void main(String[], args)
+    {
+        launch(args);
+    }
+
+important note: we include a main method which launches the application
 

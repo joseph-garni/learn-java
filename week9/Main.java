@@ -1,3 +1,2 @@
-public class Main {
+import javafx.application.application
 
-}
