@@ -8,9 +8,6 @@ lambda expressions
 - most user interface elements are called controls in Java
 - applications are interactive
 
-JavaFX model
--stage is container of applications
-
 For compiling JavaFX in my application or file, all I need do run in terminal is:
 javac --module-path $PATH_TO_FX --add-modules javafx.controls YourFile.java
 
@@ -37,4 +34,16 @@ import javafx.fxml.FXMLLoader;
 The command would be:
 
 javac --module-path /Users/josephgarni/Downloads/javafx-sdk-24/lib --add-modules javafx.controls, javafx.fxml MyFile.java
+
+JavaFX model
+-stage is container of applications i.e window of screen (i.e of your application)
+-> contents go into scene
+
+Elements are nested in hierarchical fashion:
+
+- Elements can contain containers and controls
+- Use parent-child notation for referring to containers-contents
+
+
+
 
