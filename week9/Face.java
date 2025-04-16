@@ -23,28 +23,28 @@ public class Face extends Application{
                                    // when start is called it is automatically sent an object of the Stage class -> which will be the main container for our graphic
         // first we create the main circle for the face
 
-        Circle face = new Circle(100, 100, 75);
+        Circle face = new Circle(150, 150, 100);
         face.setFill(Color.BLUE);
         face.setStroke(Color.WHITE);
 
-        Circle rightEye = new Circle(90, 100, 6);
+        Circle rightEye = new Circle(90, 100, 10);
         rightEye.setFill(Color.BLACK);
         rightEye.setStroke(Color.RED);
 
-        Circle leftEye = new Circle(110, 100, 6);
+        Circle leftEye = new Circle(110, 100, 10);
         leftEye.setFill(Color.BLACK);
         leftEye.setStroke(Color.RED);
         
         // new arc instance created named mouth where we pass through the Arc method using the values in the method we're asking for
-        Arc mouth = new Arc(120, 150, 40, 32.5, 0, -180); 
+        Arc mouth = new Arc(120, 150, 40, 30, 0, -180); 
         mouth.setFill(Color.BLACK);
         mouth.setStroke(Color.RED);
         mouth.setType(ArcType.OPEN);
 
         // Creating instance of text class called 'caption' -> our caption for our application, with its position x, y, and the text itself (the inputs of the method)
-        Text caption = new Text(80, 220, "Joseph's Chapter 10 Intial Application!");
-        caption.setFill(Color.BLACK);
-        caption.setFont(Font.font("Verdana", 15));
+        Text caption = new Text(80, 220, "Joseph's Chapter 10 Initial Application!");
+        caption.setFill(Color.GREEN);
+        caption.setFont(Font.font("Verdana", 20));
 
         // now we have created all our features, we want them to stay together as a group
         Group root = new Group(face, rightEye, leftEye, mouth, caption);
@@ -52,7 +52,7 @@ public class Face extends Application{
         // we are using the convention of the first node we add to our scene as root
         // here we are using the constructor that allows us to set the size and height of the initial scene with the Scene class
         // later min and max width / height can be set for the Scene method
-        Scene scene = new Scene(root, 250, 275, Color.BLACK);
+        Scene scene = new Scene(root, 500, 300, Color.BLACK);
 
         // add the scene to the stage, then set the title
         stage.setScene(scene);
