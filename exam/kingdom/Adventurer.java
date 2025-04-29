@@ -1,6 +1,6 @@
 package kingdom;
 
-public abstract class Adventurer {
+public class Adventurer {
     private String name;
     private Item item;
 
@@ -9,8 +9,20 @@ public abstract class Adventurer {
         this.item = item;
     }
     
-    public calculatePower() {
+    public float calculatePower() {
         return power;
     }
 
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(item) {
+        this.item = item;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
