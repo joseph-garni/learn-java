@@ -10,7 +10,9 @@ public class Elf extends Adventurer {
 
     public calculatePower() {
     
-    float power = item.calculatePower();
-    return power * accuracy;
+    float power = item.calculatePower(){
+        return power * accuracy;
+    }
+    
     }
 }

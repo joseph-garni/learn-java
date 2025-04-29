@@ -10,7 +10,12 @@ public class Adventurer {
     }
     
     public float calculatePower() {
-        return power;
+        if (item != null) {
+            return item.power();
+        }
+        else {
+            return 0;
+        }
     }
 
     public Item getItem() {
