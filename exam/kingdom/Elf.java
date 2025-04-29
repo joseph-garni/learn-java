@@ -1,6 +1,6 @@
 package kingdom;
 
-public class Elf {
+public class Elf extends Adventurer {
     private float accuracy;
 
     public Elf(String name, float accuracy) {
