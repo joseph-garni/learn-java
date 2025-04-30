@@ -3,6 +3,9 @@ package kingdom;
 import java.util.List;
 import java.util.ArrayList;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+
 public class Kingdom {
     private Adventurer adventurer;
     private Item item;
@@ -23,7 +26,7 @@ public class Kingdom {
     }
 
     public List<Adventurer> assignItems() {
-        List<Adventurer>  assignedAdventureres = new ArrayList<>();
+        List<Adventurer>  assignedAdventurers = new ArrayList<>();
 
         for (Adventurer adventurer : fellowship) { 
             // skip adventurers who already have an item
@@ -54,21 +57,36 @@ public class Kingdom {
                 if (item.getType() == targetType) {
                     adventurer.assignItem(item);
                     storage.remove(item);
-                    assignedAdventureres.add(adventurer);
+                    assignedAdventurers.add(adventurer);
                     break; // break statement so only added is item assigned targetItem
                 }
             }
-
-            return assignedAdventureres;
+            return assignedAdventurers;
         }
-
-    
 
     public List<Adventurer> getFellowship() {
 
     }
 
-    public List<Adventurer> importAdventurersFromCSV(String) {
+    public List<Adventurer> importAdventurersFromCSV(String filePath) {
+        List<Adventurer> adventurersCSVList = new ArrayList<>();
+
+        BufferedReader reader = new BufferedReader(
+            new FileReader(filePath)
+        );
+
+        String line = reader.readLine();
+
+        reader.close();
+
+    
+
+
+
+
+
+
+
 
     }
 

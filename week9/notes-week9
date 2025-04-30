@@ -119,3 +119,8 @@ public static void main(String[], args)
 
 important note: we include a main method which launches the application
 
+10.5 Event Handling in JavaFX:
+
+Controls such as buttons need to respond when the user performs some action. 
+
+4
