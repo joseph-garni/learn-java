@@ -68,17 +68,39 @@ public class Kingdom {
 
     }
 
-    public List<Adventurer> importAdventurersFromCSV(String filePath) {
+    public List<Adventurer> importAdventurersFromCSV(String filePath) throws IOException {
         List<Adventurer> adventurersCSVList = new ArrayList<>();
 
-        BufferedReader reader = new BufferedReader(
-            new FileReader(filePath)
-        );
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
 
-        String line = reader.readLine();
+            // skip header line
+            String line = reader.readLine();
 
-        reader.close();
+            // process each data line
+            while ((line = reader.readLine()) != null) {
+                String[] fields = line.split(",");
 
+                String name = fields[0];
+                String AdventurerTypeStr = fields[1];
+                String Extra = fields[2];
+
+                try {
+                    switch (AdventurerTypeStr) {
+                        case "Hobbit":
+                            // validate Extra is correct value for Hobbit
+
+                            try {
+                                int stength = Integer.parseInt(Extra);
+                                adventurersCSVList.add(new Hobbit(name, strength));
+                            } catch (NumberFormatException e)
+
+                    }
+
+                }
+
+
+            }
+        }
     
 
 
