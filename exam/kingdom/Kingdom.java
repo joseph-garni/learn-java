@@ -27,15 +27,19 @@ public class Kingdom {
         storage.add(item);
     }
 
-    private boolean isGardener(Adventurer) {
-        Adventurer adventurer = new adventurer;
-        AdventurerTyp
-        if {}
+    private boolean isGardener(Adventurer adventurer) {
+        if (adventurer instanceof Wizard) {
+            Wizard wizard = (Wizard) adventurer;
+            MagicType skill = wizard.getSkill();
+            return skill == MagicType.EARTH || skill == MagicType.WATER;
+        }
+        return false;
     }
 
-    public Stream<Adventurer> getGardeningWizards(int value) {
-        if adventurer.power < value:
-        return empty <sTREAM>
+    public Stream<Adventurer> getGardeningWizards(int minPower) {
+        return fellowship.stream()
+                .filter(this::isGardener)
+                .filter(adventurer -> adventurer.calculatePower() >= minPower);
     }
 
     public List<Adventurer> assignItems() {

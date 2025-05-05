@@ -15,14 +15,14 @@ public class Wizard extends Adventurer {
     public float calculatePower() {
         float power = item.calculatePower();
         
-        if (skill ==  "WATER") {
+        if (skill ==  MagicType.WATER) {
             return power;
         }
-        elif (skill == "EARTH") {
+        elif (skill == MagicType.EARTH) {
             return power * 2;
         }
 
-        elif (skill == "FIRE") {
+        else if (skill == MagicType.FIRE) {
             return power * 3;
         }
     }
