@@ -1,10 +1,12 @@
 package kingdom;
 
 import java.util.List;
+import java.util.stream.Stream;
 import java.util.ArrayList;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
 
 public class Kingdom {
     private Adventurer adventurer;
@@ -23,6 +25,17 @@ public class Kingdom {
 
     public void addItem(Item item) {
         storage.add(item);
+    }
+
+    private boolean isGardener(Adventurer) {
+        Adventurer adventurer = new adventurer;
+        AdventurerTyp
+        if {}
+    }
+
+    public Stream<Adventurer> getGardeningWizards(int value) {
+        if adventurer.power < value:
+        return empty <sTREAM>
     }
 
     public List<Adventurer> assignItems() {
@@ -68,48 +81,90 @@ public class Kingdom {
 
     }
 
-    public List<Adventurer> importAdventurersFromCSV(String filePath) throws IOException {
-        List<Adventurer> adventurersCSVList = new ArrayList<>();
+    public List<Adventurer> importAdventurersFromCSV(String filePath) throws java.io.IOException {
+        List<Adventurer> adventurers = new ArrayList<>;
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))){
 
-            // skip header line
-            String line = reader.readLine();
+            // skip the header line
+            reader.readLine();
 
-            // process each data line
-            while ((line = reader.readLine()) != null) {
+            String line;
+
+            while ((line = reader.readLine()) !=null) {
                 String[] fields = line.split(",");
 
-                String name = fields[0];
-                String AdventurerTypeStr = fields[1];
-                String Extra = fields[2];
-
-                try {
-                    switch (AdventurerTypeStr) {
-                        case "Hobbit":
-                            // validate Extra is correct value for Hobbit
-
-                            try {
-                                int stength = Integer.parseInt(Extra);
-                                adventurersCSVList.add(new Hobbit(name, strength));
-                            } catch (NumberFormatException e)
-
-                    }
-
+                if (fields.length != 3) {
+                    throw new java.lang.IllegalArgumentException("Each line must contain exactly three fields");
                 }
 
+                String name = fields[0];
+                String adventurerType = fields[1];
+                String extraData = fields[2];
+                
+                try {
+                    switch (adventurerType) {
+                        case "Hobbit":
+                            try {
+                                int strength = Integer.praseInt(extraData);
+                                adventurers.add(new Hobbit(name, strength));
+                            }  
+                            
+                            catch (NumberFormatException e) {
+                                throw new java.lang.IllegalArgumentException("Invalid Strength Value for Hobbit: " + extraData);
+                            }
 
+                            break;
+                        
+                        case "Elf":
+                            try {
+                                float accuracy = Float.parseFloat(extraData);
+                                adventurers.add(new Elf(name, accuracy);
+                            }
+
+                            catch (NumberFormatException e) {
+                                throw new java.lang.IllegalArgumentException("Invalid Accuracy Value for Elf: " + extraData);
+                            }
+
+                            break;
+
+                        case "Wizard":
+                            try {
+                                Wizard.MagicType skill = Wizard.MagicType.valueOf(extraData);
+                                adventurers.add(new Wizard(name, skill));
+                            }
+
+                            catch (IllegalArgumentException e) {
+                                throw new java.lang.IllegalArgumentException("Invalid MagicType for Wizard: " + extraData);
+                            }
+                            break;
+
+                        default:
+                            throw new java.lang.IllegalArgumentException("Unknown adventurer type: " + adventurerType);
+                    }
+
+                    catch (Exception e) {
+
+                        // rethrow as IllegalArgumentException
+                        
+                        if (e instanceof java.lang.IllegalArgumentException) {
+                            throw e;
+                        }
+                        else {
+                            throw new java.lang.IllegalArgumentException("Error creating adventurer: " + e.getMessage());
+                        }
+                    }
+                }
             }
+
+            catch (java.io.IOException e) {
+                // claim all file I/O errors as required by the instructions
+
+                throw e;
+            }
+
+            return adventurers;
         }
-    
-
-
-
-
-
-
-
-
     }
 
     public void removeItem(Item item) {
