@@ -3,13 +3,13 @@ package kingdom;
 public class Wizard extends Adventurer {
     private MagicType skill;
 
+    public enum MagicType {
+        FIRE, WATER, EARTH
+    }
+
     public Wizard(String name, MagicType skill) {
         this.name = name;
         this.skill = skill;
-    }
-
-    private enum MagicType {
-        FIRE, WATER, EARTH
     }
 
     public float calculatePower() {
@@ -18,7 +18,7 @@ public class Wizard extends Adventurer {
         if (skill ==  MagicType.WATER) {
             return power;
         }
-        elif (skill == MagicType.EARTH) {
+        else if (skill == MagicType.EARTH) {
             return power * 2;
         }
 
