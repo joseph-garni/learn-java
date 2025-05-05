@@ -30,7 +30,7 @@ public class Kingdom {
     private boolean isGardener(Adventurer adventurer) {
         if (adventurer instanceof Wizard) {
             Wizard wizard = (Wizard) adventurer;
-            MagicType.MagicType skill = wizard.getSkill();
+            Wizard.MagicType skill = wizard.getSkill();
 
             return skill == Wizard.MagicType.EARTH || skill == Wizard.MagicType.WATER;
         }
