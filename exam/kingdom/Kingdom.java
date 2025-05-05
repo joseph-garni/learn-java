@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.stream.Stream;
 import java.util.ArrayList;
 
+import java.util.Queue;
+import java.util.LinkedList;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -79,15 +82,52 @@ public class Kingdom {
                     break; // break statement so only added is item assigned targetItem
                 }
             }
-            return assignedAdventurers;
         }
 
-    public List<Adventurer> getFellowship() {
+        return assignedAdventurers;
+    }        
 
+    public List<Adventurer> getFellowship() {
+        return fellowship;
+    }
+
+    public Queue<Adventurer> feedFellowship() {
+        Queue<Adventurer> feedingOrder = new LinkedList<>();
+
+        // first round - hobbits
+        for (Adventurer adventurer : fellowship) {
+            if (adventurer instanceof Hobbit) {
+                feedingOrder.add(adventurer);
+            }
+        }
+
+        // second round - elfs
+        for (Adventurer adventurer : fellowship) {
+            if (adventurer instanceof Elf) {
+                feedingOrder.add(adventurer);
+            }
+        }
+        
+        // third round - wizards
+        for (Adventurer adventurer : fellowship) {
+            if (adventurer instanceof Wizard) {
+                feedingOrder.add(adventurer);
+            }
+        }
+
+        // fourth round - hobbits eat again
+        for (Adventurer adventurer : fellowship) {
+            if (adventurer instanceof Hobbit) {
+                feedingOrder.add(adventurer);
+            }
+        }
+
+        return feedingOrder;
+        
     }
 
     public List<Adventurer> importAdventurersFromCSV(String filePath) throws java.io.IOException {
-        List<Adventurer> adventurers = new ArrayList<>;
+        List<Adventurer> adventurers = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))){
 
@@ -111,7 +151,7 @@ public class Kingdom {
                     switch (adventurerType) {
                         case "Hobbit":
                             try {
-                                int strength = Integer.praseInt(extraData);
+                                int strength = Integer.parseInt(extraData);
                                 adventurers.add(new Hobbit(name, strength));
                             }  
                             
@@ -124,7 +164,7 @@ public class Kingdom {
                         case "Elf":
                             try {
                                 float accuracy = Float.parseFloat(extraData);
-                                adventurers.add(new Elf(name, accuracy);
+                                adventurers.add(new Elf(name, accuracy));
                             }
 
                             catch (NumberFormatException e) {
@@ -177,7 +217,6 @@ public class Kingdom {
     }
 
     public Adventurer removeAdventurer(int index) {
-
         return fellowship.remove(index);
     }
 
