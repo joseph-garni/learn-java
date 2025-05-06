@@ -163,7 +163,7 @@ public class Kingdom {
                             throw new IllegalArgumentException("Unknown adventurer type: " + adventurerType);
                         }
                 } catch (NumberFormatException | IllegalArgumentException e) {
-                    throw new IllegalArgumentException("Invalid data for adventurer: "+ line, e)
+                    throw new IllegalArgumentException("Invalid data for adventurer: "+ line, e);
                 }
             }
         }
