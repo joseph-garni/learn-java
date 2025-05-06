@@ -138,62 +138,38 @@ public class Kingdom {
                 String[] fields = line.split(",");
 
                 if (fields.length != 3) {
-                    throw new IllegalArgumentException("Each line must contain exactly three fields");
+                    throw new IllegalArgumentException("Invalid number of fields in line: " + line);
                 }
 
-                String name = fields[0];
-                String adventurerType = fields[1];
-                String extraData = fields[2];
+                String name = fields[0].trim();
+                String adventurerType = fields[1].trim();
+                String extraData = fields[2].trim());
                 
                 try {
                     switch (adventurerType) {
                         case "Hobbit":
-                            try {
                                 int strength = Integer.parseInt(extraData);
                                 adventurers.add(new Hobbit(name, strength));
-                            } catch (NumberFormatException e) {
-                                throw new IllegalArgumentException("Invalid Strength Value for Hobbit: " + extraData);
-                            }
-                            break;
-                        
+                                break;
                         case "Elf":
-                            try {
                                 float accuracy = Float.parseFloat(extraData);
                                 adventurers.add(new Elf(name, accuracy));
-                            } catch (NumberFormatException e) {
-                                throw new IllegalArgumentException("Invalid Accuracy Value for Elf: " + extraData);
-                            }
-                            break;
-
+                                break;
                         case "Wizard":
-                            try {
                                 Wizard.MagicType skill = Wizard.MagicType.valueOf(extraData);
                                 adventurers.add(new Wizard(name, skill));
-                            } catch (IllegalArgumentException e) {
-                                throw new IllegalArgumentException("Invalid MagicType for Wizard: " + extraData);
-                            }
-                            break;
-
+                                break;
                         default:
                             throw new IllegalArgumentException("Unknown adventurer type: " + adventurerType);
                         }
-                  } catch (Exception e) {
-                        // rethrow as IllegalArgumentException
-                        
-                        if (e instanceof IllegalArgumentException) {
-                            throw e;
-                        } else {
-                            throw new IllegalArgumentException("Error creating adventurer: " + e.getMessage());
-                        }
-                    }
+                } catch (NumberFormatException | IllegalArgumentException e) {
+                    throw new IllegalArgumentException("Invalid data for adventurer: "+ line, e)
                 }
-
-                return adventurers;
-
-            } catch (IOException e) {
-                // claim all file I/O errors as required by the instructions
-                throw e;
             }
+        }
+
+        return adventurers;
+                  
     }
 
     public void removeItem(Item item) {
