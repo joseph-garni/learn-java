@@ -12,8 +12,6 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Kingdom {
-    private Adventurer adventurer;
-    private Item item;
     private List<Adventurer> fellowship = new ArrayList<>();
     private List<Item> storage = new ArrayList<>();
 
@@ -186,6 +184,7 @@ public class Kingdom {
 
                         default:
                             throw new java.lang.IllegalArgumentException("Unknown adventurer type: " + adventurerType);
+
                     }
 
                     catch (Exception e) {
