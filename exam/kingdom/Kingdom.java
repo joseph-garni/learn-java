@@ -124,7 +124,7 @@ public class Kingdom {
         
     }
 
-    public List<Adventurer> importAdventurersFromCSV(String filePath) throws java.io.IOException {
+    public List<Adventurer> importAdventurersFromCSV(String filePath) throws IOException {
         List<Adventurer> adventurers = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))){
@@ -138,7 +138,7 @@ public class Kingdom {
                 String[] fields = line.split(",");
 
                 if (fields.length != 3) {
-                    throw new java.lang.IllegalArgumentException("Each line must contain exactly three fields");
+                    throw new IllegalArgumentException("Each line must contain exactly three fields");
                 }
 
                 String name = fields[0];
@@ -151,64 +151,49 @@ public class Kingdom {
                             try {
                                 int strength = Integer.parseInt(extraData);
                                 adventurers.add(new Hobbit(name, strength));
-                            }  
-                            
-                            catch (NumberFormatException e) {
-                                throw new java.lang.IllegalArgumentException("Invalid Strength Value for Hobbit: " + extraData);
+                            } catch (NumberFormatException e) {
+                                throw new IllegalArgumentException("Invalid Strength Value for Hobbit: " + extraData);
                             }
-
                             break;
                         
                         case "Elf":
                             try {
                                 float accuracy = Float.parseFloat(extraData);
                                 adventurers.add(new Elf(name, accuracy));
+                            } catch (NumberFormatException e) {
+                                throw new IllegalArgumentException("Invalid Accuracy Value for Elf: " + extraData);
                             }
-
-                            catch (NumberFormatException e) {
-                                throw new java.lang.IllegalArgumentException("Invalid Accuracy Value for Elf: " + extraData);
-                            }
-
                             break;
 
                         case "Wizard":
                             try {
                                 Wizard.MagicType skill = Wizard.MagicType.valueOf(extraData);
                                 adventurers.add(new Wizard(name, skill));
-                            }
-
-                            catch (IllegalArgumentException e) {
-                                throw new java.lang.IllegalArgumentException("Invalid MagicType for Wizard: " + extraData);
+                            } catch (IllegalArgumentException e) {
+                                throw new IllegalArgumentException("Invalid MagicType for Wizard: " + extraData);
                             }
                             break;
 
                         default:
-                            throw new java.lang.IllegalArgumentException("Unknown adventurer type: " + adventurerType);
-
-                    }
-
-                    catch (Exception e) {
-
+                            throw new IllegalArgumentException("Unknown adventurer type: " + adventurerType);
+                        }
+                  } catch (Exception e) {
                         // rethrow as IllegalArgumentException
                         
-                        if (e instanceof java.lang.IllegalArgumentException) {
+                        if (e instanceof IllegalArgumentException) {
                             throw e;
-                        }
-                        else {
-                            throw new java.lang.IllegalArgumentException("Error creating adventurer: " + e.getMessage());
+                        } else {
+                            throw new IllegalArgumentException("Error creating adventurer: " + e.getMessage());
                         }
                     }
                 }
-            }
 
-            catch (java.io.IOException e) {
+                return adventurers;
+
+            } catch (IOException e) {
                 // claim all file I/O errors as required by the instructions
-
                 throw e;
             }
-
-            return adventurers;
-        }
     }
 
     public void removeItem(Item item) {
