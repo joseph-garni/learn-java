@@ -22,7 +22,7 @@ public class Adventurer {
         return item;
     }
 
-    public void setItem(item) {
+    public void setItem(Item item) {
         this.item = item;
     }
 

@@ -4,15 +4,12 @@ public class Elf extends Adventurer {
     private float accuracy;
 
     public Elf(String name, float accuracy) {
-        this.name = name;
+        super(name, null);
         this.accuracy = accuracy;
     }
 
-    public calculatePower() {
-    
-    float power = item.calculatePower(){
+    public float calculatePower() {
+        float power = getItem() != null ? getItem().power() : 0;
         return power * accuracy;
-    }
-    
     }
 }

@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.stream.Stream;
 import java.util.ArrayList;
 
+import kingdom.Item.ItemType;
+
 import java.util.Queue;
 import java.util.LinkedList;
 
@@ -18,6 +20,26 @@ public class Kingdom {
     public Kingdom(List<Adventurer> fellowship, List<Item> storage) {
         this.fellowship = fellowship;
         this.storage = storage;
+    }
+
+    public static void main(String[] args) {
+        // Create a new Kingdom with empty lists
+        Kingdom kingdom = new Kingdom(new ArrayList<>(), new ArrayList<>());
+        
+        // Add some adventurers
+        kingdom.addAdventurer(new Hobbit("Frodo", 5));
+        kingdom.addAdventurer(new Elf("Legolas", 0.95f));
+        kingdom.addAdventurer(new Wizard("Gandalf", Wizard.MagicType.FIRE));
+        
+        // Test your methods
+        System.out.println("Fellowship size: " + kingdom.getFellowship().size());
+        
+        // Test feeding order
+        Queue<Adventurer> feedingOrder = kingdom.feedFellowship();
+        System.out.println("Feeding order:");
+        for (Adventurer adventurer : feedingOrder) {
+            System.out.println(adventurer);
+        }
     }
     
     public void addAdventurer(Adventurer adventurer) {
@@ -44,12 +66,12 @@ public class Kingdom {
                 .filter(adventurer -> adventurer.calculatePower() >= minPower);
     }
 
-    public List<Adventurer> assignItems() {
+    public List<Adventurer> assignItems(Adventurer adv, Item itm) {
         List<Adventurer>  assignedAdventurers = new ArrayList<>();
 
         for (Adventurer adventurer : fellowship) { 
             // skip adventurers who already have an item
-            if (adventurer.hasItem()) {
+            if (adventurer.getItem() != null) {
                 continue;
             }
 
@@ -73,8 +95,8 @@ public class Kingdom {
             // assign the first compatible item in storage
 
             for (Item item : storage) {
-                if (item.getType() == targetType) {
-                    adventurer.assignItem(item);
+                if (item.itemType() == targetType) {
+                    adventurer.setItem(item);
                     storage.remove(item);
                     assignedAdventurers.add(adventurer);
                     break; // break statement so only added is item assigned targetItem
@@ -162,7 +184,7 @@ public class Kingdom {
                         default:
                             throw new IllegalArgumentException("Unknown adventurer type: " + adventurerType);
                         }
-                } catch (NumberFormatException | IllegalArgumentException e) {
+                } catch (IllegalArgumentException e) {
                     throw new IllegalArgumentException("Invalid data for adventurer: "+ line, e);
                 }
             }

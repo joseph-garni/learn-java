@@ -4,7 +4,7 @@ public class Hobbit extends Adventurer {
     private int strength;
 
     public Hobbit(String name, int strength) {
-        this.name = name;
+        super(name, null);
         this.strength = strength;
     }
 
@@ -13,7 +13,7 @@ public class Hobbit extends Adventurer {
         Item item = getItem();
         
         if (item != null) {
-            float power = item.calculatePower();
+            float power = item.power();
             return power * strength;
         }
         return 0;

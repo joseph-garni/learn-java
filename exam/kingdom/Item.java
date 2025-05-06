@@ -1,11 +1,8 @@
 package kingdom;
 
-public abstract record Item() {
-    private String name;
-    private float power;
-    private ItemType itemType;
+public record Item(String name, float power, ItemType itemType) {
 
-    private enum ItemType {
+    public enum ItemType {
         HANDHELD, RANGED, MAGICAL
     }
 
@@ -17,7 +14,7 @@ public abstract record Item() {
 
     @Override
     public String toString() {
-        return itemType +": " +name+ "with "+power+" power"
+        return itemType + ": " + name + " with "+ power + " power";
     }
 
 }

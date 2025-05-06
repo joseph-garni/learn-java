@@ -8,12 +8,12 @@ public class Wizard extends Adventurer {
     }
 
     public Wizard(String name, MagicType skill) {
-        this.name = name;
+        super(name, null);
         this.skill = skill;
     }
 
     public float calculatePower() {
-        float power = item.calculatePower();
+        float power = getItem() != null ? getItem().power() : 0;
         
         if (skill ==  MagicType.WATER) {
             return power;
@@ -25,6 +25,8 @@ public class Wizard extends Adventurer {
         else if (skill == MagicType.FIRE) {
             return power * 3;
         }
+
+        return power;
     }
 
     public MagicType getSkill() {
