@@ -143,7 +143,7 @@ public class Kingdom {
 
                 String name = fields[0].trim();
                 String adventurerType = fields[1].trim();
-                String extraData = fields[2].trim());
+                String extraData = fields[2].trim();
                 
                 try {
                     switch (adventurerType) {
