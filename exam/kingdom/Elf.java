@@ -5,7 +5,22 @@ public class Elf extends Adventurer {
 
     public Elf(String name, float accuracy) {
         super(name, null);
-        this.accuracy = accuracy;
+        
+        // enforce accuracy range between 0 and 100
+
+        if (accuracy < 0) {
+            this.accuracy = 0;
+        }
+        else if (this.accuracy > 100) {
+            this.accuracy = 100;
+        }
+        else {
+            this.accuracy = accuracy;
+        }
+    }
+
+    public Elf(float accuracy) {
+        this(null, accuracy);
     }
 
     public float calculatePower() {
