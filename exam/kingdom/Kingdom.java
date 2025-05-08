@@ -65,7 +65,7 @@ public class Kingdom {
                 .filter(adventurer -> adventurer.calculatePower() >= minPower);
     }
 
-    public List<Adventurer> assignItems(Adventurer adv, Item itm) {
+    public List<Adventurer> assignItems() {
         List<Adventurer>  assignedAdventurers = new ArrayList<>();
 
         for (Adventurer adventurer : fellowship) { 
