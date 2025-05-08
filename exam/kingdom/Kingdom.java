@@ -50,10 +50,8 @@ public class Kingdom {
     }
 
     private boolean isGardener(Adventurer adventurer) {
-        if (adventurer instanceof Wizard) {
-            Wizard wizard = (Wizard) adventurer;
+        if (adventurer instanceof Wizard wizard) {
             Wizard.MagicType skill = wizard.getSkill();
-
             return skill == Wizard.MagicType.EARTH || skill == Wizard.MagicType.WATER;
         }
         return false;
@@ -87,6 +85,7 @@ public class Kingdom {
                 targetType = ItemType.MAGICAL;
             }
 
+            // need this here because if not we will get an error
             if (targetType == null) {
                 continue;
             }
@@ -160,7 +159,7 @@ public class Kingdom {
 
                 if (fields.length != 3) {
                     throw new IllegalArgumentException("Invalid number of fields in line: " + line);
-                }
+                }       
 
                 String name = fields[0].trim();
                 String adventurerType = fields[1].trim();
