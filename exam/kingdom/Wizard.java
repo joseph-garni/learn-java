@@ -13,7 +13,12 @@ public class Wizard extends Adventurer {
     }
 
     public float calculatePower() {
-        float power = getItem() != null ? getItem().power() : 0;
+
+        Item item = getItem();
+        float power = 0;
+        if (item != null) {
+            power = item.power();
+        }
         
         if (skill ==  MagicType.WATER) {
             return power;

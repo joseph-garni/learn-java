@@ -21,7 +21,6 @@ public class Kingdom {
         this.fellowship = fellowship;
         this.storage = storage;
     }
-
     public static void main(String[] args) {
         // Create a new Kingdom with empty lists
         Kingdom kingdom = new Kingdom(new ArrayList<>(), new ArrayList<>());
