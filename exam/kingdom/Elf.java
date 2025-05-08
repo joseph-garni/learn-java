@@ -9,22 +9,29 @@ public class Elf extends Adventurer {
         // enforce accuracy range between 0 and 100
 
         if (accuracy < 0) {
-            this.accuracy = 0;
+            accuracy = 0;
         }
-        else if (this.accuracy > 100) {
-            this.accuracy = 100;
+        else if (accuracy > 100) {
+            accuracy = 100;
         }
-        else {
-            this.accuracy = accuracy;
-        }
+
+        this.accuracy = accuracy;
     }
 
-    public Elf(float accuracy) {
-        this(null, accuracy);
+    /* commenting this out, it is not needed -> all of our elves have names (I think)
+    /public Elf(float accuracy) {
+       this(null, accuracy);
     }
+    */
 
     public float calculatePower() {
-        float power = getItem() != null ? getItem().power() : 0;
+        Item item = getItem();
+        float power = 0;
+
+        if (item!= null) {
+            power = item.power();
+        }
+
         return (power * accuracy) / 100.0f;
     }
-}
+}   
