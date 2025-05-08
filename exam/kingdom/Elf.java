@@ -25,6 +25,6 @@ public class Elf extends Adventurer {
 
     public float calculatePower() {
         float power = getItem() != null ? getItem().power() : 0;
-        return power * accuracy;
+        return (power * accuracy) / 100.0f;
     }
 }
