@@ -144,7 +144,7 @@ public class Kingdom {
         
     }
 
-    public List<Adventurer> importAdventurersFromCSV(String filePath) throws IOException {
+    public static List<Adventurer> importAdventurersFromCSV(String filePath) throws IOException {
         List<Adventurer> adventurers = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))){
